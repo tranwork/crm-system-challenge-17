@@ -24,3 +24,35 @@ class Customer {
   customer1.addPurchase(120);
   customer1.addPurchase(80);
   customer1.getTotalSpent();  
+
+  // Task 2 – Create SalesRep class
+class SalesRep {
+    constructor(name) {
+      this.name = name;
+      this.clients = [];
+      console.log("Sales rep created:", this.name);
+    }
+  
+    addClient(customer) {
+      this.clients.push(customer);
+      console.log(`${customer.name} has been added as a client of ${this.name}`);
+    }
+  
+    getClientTotal(name) {
+      const client = this.clients.find(c => c.name === name);
+      if (client) {
+        const total = client.getTotalSpent();
+        console.log(`Total spent by ${name}: $${total}`);
+        return total;
+      } else {
+        console.log(`Client named ${name} not found.`);
+        return 0;
+      }
+    }
+  }
+  
+  // Example usage
+  const rep1 = new SalesRep("Jaden Ly");
+  rep1.addClient(customer1);
+  rep1.getClientTotal("Jenny Tran");
+  
